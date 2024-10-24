@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend
+      - ./shared:/app/shared
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CORS_ORIGIN=http://localhost:3000
+    command: ["uvicorn", "backend.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_DYNAMIC_MOCKUPS_API_KEY=da9edaec-d9b6-44e0-9a2b-f285313c774b:f73cde9e536f5b1cb5bc1cde370a841d843eee0fb893a2b25f9791dd77a81df4
+    depends_on:
+      - backend
