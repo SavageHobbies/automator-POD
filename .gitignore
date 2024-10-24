@@ -1,24 +1,41 @@
-﻿# Environment files
+﻿# ============================
+# Environment Files
+# ============================
 .env
 *.env
 .env.*
 !.env.example
 
+# ============================
+# Node.js Dependencies and Logs
+# ============================
 # Node modules
 node_modules/
+
+# Logs
 npm-debug.log
 yarn-debug.log
 yarn-error.log
+logs/
+*.log
 
+# ============================
 # Python
+# ============================
+# Python cache files
 __pycache__/
 *.py[cod]
-*.class
-*.so
-.Python
+*$py.class
+
+# Virtual environments
 env/
+venv/
+ENV/
+.venv/
+.env/
+
+# Distribution / Packaging
 build/
-develop-eggs/
 dist/
 downloads/
 eggs/
@@ -33,7 +50,12 @@ wheels/
 .installed.cfg
 *.egg
 
-# IDE
+# C extensions
+*.so
+
+# ============================
+# IDE and Editor Directories/Files
+# ============================
 .idea/
 .vscode/
 *.swp
@@ -41,23 +63,37 @@ wheels/
 *.swn
 *.bak
 
-# OS
+# ============================
+# Operating System Files
+# ============================
+# macOS
 .DS_Store
+
+# Windows
 Thumbs.db
 
-# Logs
-logs/
-*.log
-
-# Testing
+# ============================
+# Testing and Coverage
+# ============================
 coverage/
 .coverage
 .pytest_cache/
 htmlcov/
+.tox/
+.nox/
+.hypothesis/
 
-# Distribution
-dist/
-build/
+# ============================
+# Temporary and Cache Files
+# ============================
+# Cache directories
+/cache/
+/**/cache/
 
-# Local development
-*.sqlite3
+# Specific cache file types
+*.cache
+*.tmp
+
+# Temporary directories
+/tmp/
+temp/
